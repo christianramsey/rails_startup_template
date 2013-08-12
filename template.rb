@@ -15,12 +15,24 @@ gem "haml-rails" if yes?("Use HAML instead of ERB?")
 gem "simple_form"
 # To generate UUIDs, useful for various things
 gem "uuidtools"
+# for creating form ellements
+gem "simple_form"
+
+gem_group :auth if yes?("Auth package")
+  gem "devise", ">= 2.2.3"
+  gem "cancan", ">= 1.6.9"
+  gem "rolify", ">= 3.2.0"
+end
 
 gem_group :development do
   # Rspec for tests (https://github.com/rspec/rspec-rails)
   gem "rspec-rails"
+  gem "cucumber-rails" if yes?("Use Cucumber?")
   # Guard for automatically launching your specs when files are modified. (https://github.com/guard/guard-rspec)
   gem "guard-rspec"
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "meta_request"  
 end
 
 gem_group :test do
@@ -35,6 +47,8 @@ gem_group :production do
   # For Rails 4 deployment on Heroku
   gem "rails_12factor"
 end
+
+
 
 
 # Setting up foreman to deal with environment variables and services
