@@ -15,8 +15,10 @@ gem "haml-rails" if yes?("Use HAML instead of ERB?")
 gem "simple_form"
 # To generate UUIDs, useful for various things
 gem "uuidtools"
-# for creating form ellements
+# for creating form elements
 gem "simple_form"
+# default database
+gem 'pg'
 
 gem_group :auth if yes?("Auth package")
   gem "devise", ">= 2.2.3"
@@ -28,6 +30,8 @@ gem_group :development do
   # Rspec for tests (https://github.com/rspec/rspec-rails)
   gem "rspec-rails"
   gem "cucumber-rails" if yes?("Use Cucumber?")
+  
+  
   # Guard for automatically launching your specs when files are modified. (https://github.com/guard/guard-rspec)
   gem "guard-rspec"
   gem "better_errors"
@@ -41,6 +45,7 @@ gem_group :test do
   gem "capybara-webkit"
   # FactoryGirl instead of Rails fixtures (https://github.com/thoughtbot/factory_girl)
   gem "factory_girl_rails"
+  gem "database_cleaner"
 end
 
 gem_group :production do
