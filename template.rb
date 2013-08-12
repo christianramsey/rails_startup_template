@@ -20,28 +20,28 @@ gem "simple_form"
 # default database
 gem 'pg'
 
-gem_group :auth if yes?("Auth package")
-  gem "devise", ">= 2.2.3"
-  gem "cancan", ">= 1.6.9"
-  gem "rolify", ">= 3.2.0"
+gem_group :auth do
+  gem "devise", ">= 2.2.3" if yes?("devise")
+  gem "cancan", ">= 1.6.9" if yes?("cancan")
+  gem "rolify", ">= 3.2.0" if yes?("rolify?")
 end
 
 gem_group :development do
   # Rspec for tests (https://github.com/rspec/rspec-rails)
   gem "rspec-rails"
   gem "cucumber-rails" if yes?("Use Cucumber?")
-  
-  
+
+
   # Guard for automatically launching your specs when files are modified. (https://github.com/guard/guard-rspec)
   gem "guard-rspec"
   gem "better_errors"
   gem "binding_of_caller"
-  gem "meta_request"  
+  gem "meta_request"
 end
 
 gem_group :test do
   # Capybara for integration testing (https://github.com/jnicklas/capybara)
-  gem "capybara" 
+  gem "capybara"
   gem "capybara-webkit"
   # FactoryGirl instead of Rails fixtures (https://github.com/thoughtbot/factory_girl)
   gem "factory_girl_rails"
@@ -79,7 +79,7 @@ run "bundle exec guard init rspec"
 # ==================================================
 # Use SASS extension for application.css
 run "mv app/assets/stylesheets/application.css app/assets/stylesheets/application.css.scss"
-# Remove the require_tree directives from the sass and JS files. 
+# Remove the require_tree directives from the sass and JS files.
 # It's better design to import or require things manually.
 run "sed -i '' /require_tree/d app/assets/javascripts/application.js"
 run "sed -i '' /require_tree/d app/assets/stylesheets/application.css.scss"
